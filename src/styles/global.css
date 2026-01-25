@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+
+@layer base {
+  :root {
+    --bg: 255, 255, 255;
+    --text: 15, 23, 42;
+  }
+
+  body {
+    @apply bg-white text-slate-900 antialiased;
+  }
+}
