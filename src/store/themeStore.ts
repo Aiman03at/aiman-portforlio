@@ -1,15 +1,23 @@
 
-import {create} from 'zustand';
+import { create } from "zustand";
 
-interface ThemeStore {
-  dark: boolean
-  toggle:() =>void
-}
+type ThemeState = {
+  dark: boolean;
+  toggle: () => void;
+};
 
-export const useThemeStore = create<ThemeStore>((set) => ({
+export const useThemeStore = create<ThemeState>((set) => ({
   dark: false,
-  toggle: () =>{ 
-    console.log("Toggling theme");
-    set((state) => ({dark: !state.dark}))
-},
-}));  
+  toggle: () =>
+    set((state) => {
+      const newTheme = !state.dark;
+
+      if (newTheme) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+
+      return { dark: newTheme };
+    }),
+}));
