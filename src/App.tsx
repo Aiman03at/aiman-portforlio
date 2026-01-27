@@ -14,19 +14,18 @@ function App() {
   
     <BrowserRouter>
     <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white transition-colors">
-      <header className="p-6 flex justify-between items-center">
-        <h1 className="font-bold text-xl">Aiman ✨</h1>
-        <DarkModeToggle />
-      </header>
+      
 
       
         <Navbar/>
+        <main className="pt-16">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/projects" element={<Projects />} />
           
         </Routes>
+        </main>
       </div>
     </BrowserRouter>
   )

@@ -1,17 +1,58 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import DarkModeToggle from "./DarkModeToggle";
 
-export default function Navbar(){
+const baseLink =
+  "px-3 py-2 rounded-md text-sm font-medium transition";
 
-  return(
-    <nav className="sticky top-0 z-50 flex items-center justify-between px-8 py-4 bg-white dark:bg-black border-b border-slate-200 dark:border-slate-800">
-      <h1 className="text-xl font-bold"> Aiman ✨</h1>
-      <div>
-        <Link to="/" className="hover:text-indigo-500">Home</Link>
-        <Link to="/blog" className="hover:text-indigo-500">Blog</Link>
-        <Link to="/projects" className="hover:text-indigo-500">Projects</Link>
-        
+export default function Navbar() {
+  return (
+    <nav className="sticky top-0 z-50 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-black">
+      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <span className="font-bold text-lg">Aiman ✨</span>
+
+        <div className="flex items-center gap-2">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `${baseLink} ${
+                isActive
+                  ? "bg-gray-200 dark:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                  : "hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`
+            }
+          >
+            Home
+          </NavLink>
+
+          <NavLink
+            to="/projects"
+            className={({ isActive }) =>
+              `${baseLink} ${
+                isActive
+                  ? "bg-gray-200 dark:bg-gray-800"
+                  : "hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`
+            }
+          >
+            Projects
+          </NavLink>
+
+          <NavLink
+            to="/blog"
+            className={({ isActive }) =>
+              `${baseLink} ${
+                isActive
+                  ? "bg-gray-200 dark:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                  : "hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`
+            }
+          >
+            Blog
+          </NavLink>
+
+          <DarkModeToggle />
+        </div>
       </div>
-
     </nav>
-  )
+  );
 }
