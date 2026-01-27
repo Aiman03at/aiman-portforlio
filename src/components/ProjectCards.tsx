@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import {Link} from "react-router-dom";
+
 
 type ProjectCardProps = {
   title: string;
@@ -14,12 +16,19 @@ export default function ProjectCards({
   image,
 }: ProjectCardProps) {
   return (
+    <Link to={`/projects/${title.toLocaleLowerCase().replace(/\s+/g, "-")}`}>
     <motion.article
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
       whileHover={{ y: -6 }}
-      transition={{ type: "spring", stiffness: 300 }}
+    
       className="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 
                  bg-white dark:bg-gray-900 shadow-sm hover:shadow-lg"
     >
+      {/* Add Overlay */}
+      <div className="relative">
       <img
         src={image}
         alt={title}
@@ -40,7 +49,9 @@ export default function ProjectCards({
             </span>
           ))}
         </div>
+        </div>
       </div>
     </motion.article>
+    </Link>
   );
 }
