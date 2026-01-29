@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 
 
 type ProjectCardProps = {
+  id: string;
   title: string;
   description: string;
   tech: string[];
@@ -10,13 +11,14 @@ type ProjectCardProps = {
 };
 
 export default function ProjectCards({
+  id,
   title,
   description,
   tech,
   image,
 }: ProjectCardProps) {
   return (
-    <Link to={`/projects/${title.toLocaleLowerCase().replace(/\s+/g, "-")}`}>
+    <Link to={`/projects/${id}`}>
     <motion.article
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -24,6 +26,8 @@ export default function ProjectCards({
       transition={{ duration: 0.5 }}
       whileHover={{ y: -6 }}
     
+
+
       className="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 
                  bg-white dark:bg-gray-900 shadow-sm hover:shadow-lg"
     >

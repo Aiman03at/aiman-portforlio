@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Blog from "./pages/Blog";
 import Projects from "./pages/Projects";
-import DarkModeToggle from "./components/DarkModeToggle";
+import  ProjectDetails from "./pages/ProjectDetails"
 
 function App() {
   
@@ -23,7 +23,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/projects" element={<Projects />} />
-          
+          <Route path="/projects/:id" element={<ProjectDetails />} />
         </Routes>
         </main>
       </div>
