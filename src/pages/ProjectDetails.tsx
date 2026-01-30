@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
 import { projects } from "../data/projects";
 import {motion} from "framer-motion";
-import { fadeUp } from "../aimations/variants";   
+import { fadeUp} from "../aimations/variants";   
 import { stagger } from "../aimations/variants";
+import { sectionVariant } from "../aimations/variants";
 
 export default function ProjectDetails() {
   const { id } = useParams();
@@ -47,56 +48,94 @@ export default function ProjectDetails() {
       ))}
       </div>
       {/* Case Study Section */}
-      <div className="space-y-2">
+       {/* Problem and Solution Section */}
+      <div className="grid md:grid-cols-2 gap-8 mb-19">
+      <motion.div variants={fadeUp}>
       <h2 className="text-2xl font-bold">
        Problem
       </h2>
       <p className="leading-relaxed opacity-90">
       {project.caseStudy.problem}
       </p>
-      </div>
+      </motion.div>
 
-        <div className="mt-8 space-y-6">
+        <motion.div variants={fadeUp}>
           <h2 className="text-2xl font-bold mb-2">
             Solution
           </h2>
           <p>{project.caseStudy.solution}</p>
+        </motion.div>
         </div>
 
-        <div className="mt-8 space-y-6">
+        {/* Features Section */}
+        <motion.div variants={stagger}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="flex flex-wrap gap-3 mb-10">
+          <h2 className="text-2xl font-bold mb-2">
+            Features
+          </h2>
+          <ul className="list-disc list-inside">
+            {project.features.map((feature, index) => (
+              <li key={index}>{feature}</li>
+            ))}
+          </ul>
+        </motion.div>
+
+        <motion.div variants={fadeUp} className="mt-8 space-y-6">
           <h2 className="text-2xl font-bold mb-2">
             AI Integration
           </h2>
           <p>{project.caseStudy.ai}</p>
-        </div>
+        </motion.div>
 
-        <div className="mt-8 space-y-6">
+        <motion.div variants={fadeUp} className="mt-8 space-y-6">
           <h2 className="text-2xl font-bold mb-2">
             Learnings
           </h2>
           <p>{project.caseStudy.learnings}</p>
-        </div>
+        </motion.div>
       
 
-{/*AI Section */}
+{project.improvements && (
+        <motion.div variants={sectionVariant}
+        initial="hidden"
+        whileInView="visible" 
+        viewport={{ once: true }}
+        className=" mt-10 rounded-xl border border-gray-700/40 bg-zinc-900/50 p-6 backdrop-blur-sm">
+          <h3 className="text-xl font-semibold mb-2">
+            Improvements
+          </h3>
+          <ul className="space-y-3">
+            {project.improvements.map((improvement, index) => (
+              <motion.li
+               key={index}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                className="flex items-start gap-2 text-gray-300"
+               >
+                <span className="mt-1 h-2 w-2 rounded-full bg-indigo-500"/>
+                  <p className="text-zinc-300 leading-relaxed">{improvement}
 
-      <div className="space-y-2">
-  <h2 className="text-2xl font-bold">
-    Problem
-  </h2>
-  <p className="leading-relaxed opacity-90">
-    {project.caseStudy.problem}
-  </p>
-</div>
+                  </p>
+                  
+
+               </motion.li>
+            ))}
+          </ul>
+        </motion.div> 
+) } 
 
       {/* Screenshots Section */}
       <div className="mt-8 space-y-6"  >
-  <h2 className="text-2xl font-bold mb-4">
-    Screenshots
-  </h2>
+        <h2 className="text-2xl font-bold mb-4">
+         Screenshots
+         </h2>
 
-  <div className="grid gap-6 sm:grid-cols-2">
-    {project.screenshots.map((img) => (
+        <div className="grid gap-6 sm:grid-cols-2">
+        {project.screenshots.map((img) => (
       <img
         key={img}
         src={img}
