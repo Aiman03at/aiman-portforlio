@@ -4,6 +4,7 @@ import {motion} from "framer-motion";
 import { fadeUp} from "../aimations/variants";   
 import { stagger } from "../aimations/variants";
 import { sectionVariant } from "../aimations/variants";
+import PageWrapper from "../components/PageWrapper";
 
 export default function ProjectDetails() {
   const { id } = useParams();
@@ -17,6 +18,7 @@ export default function ProjectDetails() {
   }
 
   return (
+    <PageWrapper>
     <motion.section
     initial="hidden"
     whileInView="visible"
@@ -67,6 +69,46 @@ export default function ProjectDetails() {
         </motion.div>
         </div>
 
+
+
+
+
+        {/* Challenges */}
+{project.caseStudy.challenges && (
+  <motion.section
+    variants={sectionVariant}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true }}
+    className="mt-12"
+  >
+    <h3 className="text-xl font-semibold mb-3">Challenges</h3>
+    <ul className="space-y-2 ">
+      {project.caseStudy.challenges.map((item, i) => (
+        <li key={i}>• {item}</li>
+      ))}
+    </ul>
+  </motion.section>
+)}
+
+{/* Trade-offs */}
+{project.caseStudy.tradeoffs && (
+  <motion.section
+    variants={sectionVariant}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true }}
+    className="mt-10"
+  >
+    <h3 className="text-xl font-semibold mb-3">Trade-offs</h3>
+    <ul className="space-y-2" >
+      {project.caseStudy.tradeoffs.map((item, i) => (
+        <li key={i}>• {item}</li>
+      ))}
+    </ul>
+  </motion.section>
+)}
+
         {/* Features Section */}
         <motion.div variants={stagger}
         initial="hidden"
@@ -103,7 +145,7 @@ export default function ProjectDetails() {
         initial="hidden"
         whileInView="visible" 
         viewport={{ once: true }}
-        className=" mt-10 rounded-xl border border-gray-700/40 bg-zinc-900/50 p-6 backdrop-blur-sm">
+        className=" mt-10 rounded-xl border border-gray-700/40 bg-zinc-100/50 p-6 backdrop-blur-sm">
           <h3 className="text-xl font-semibold mb-2">
             Improvements
           </h3>
@@ -114,10 +156,10 @@ export default function ProjectDetails() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="flex items-start gap-2 text-gray-300"
+                className="flex items-start gap-2 "
                >
                 <span className="mt-1 h-2 w-2 rounded-full bg-indigo-500"/>
-                  <p className="text-zinc-300 leading-relaxed">{improvement}
+                  <p className=" leading-relaxed">{improvement}
 
                   </p>
                   
@@ -129,7 +171,8 @@ export default function ProjectDetails() {
 ) } 
 
       {/* Screenshots Section */}
-      <div className="mt-8 space-y-6"  >
+      <div className="rounded-xl overflow-hidden 
+hover:scale-[1.03] transition-transform"  >
         <h2 className="text-2xl font-bold mb-4">
          Screenshots
          </h2>
@@ -140,6 +183,7 @@ export default function ProjectDetails() {
         key={img}
         src={img}
         alt="Project screenshot"
+        loading="lazy"
         className="rounded-lg shadow"
       />
     ))}
@@ -148,11 +192,16 @@ export default function ProjectDetails() {
 
 
 {/* Buttons */}
-      <div className="flex gap-4">
+      <div className="px-6 py-2 rounded-lg bg-indigo-600 
+hover:bg-indigo-500 transition-all 
+hover:scale-[1.02]">
         <a
           href={project.live}
           target="_blank"
-          className="px-6 py-3 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700"
+          className="px-6 py-3 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700
+          focus-visible:outline-none
+focus-visible:ring-2
+focus-visible:ring-indigo-500"
         >
           Live Demo
         </a>
@@ -160,12 +209,15 @@ export default function ProjectDetails() {
         <a
           href={project.github}
           target="_blank"
-          className="px-6 py-3 rounded-lg border"
+          className="px-6 py-3 rounded-lg border focus-visible:outline-none
+focus-visible:ring-2
+focus-visible:ring-indigo-500"
         >
           GitHub
         </a>
       </div>
     
     </motion.section>
+    </PageWrapper>
   );
 }

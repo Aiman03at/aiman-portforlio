@@ -1,8 +1,9 @@
 import { projects } from "../data/projects";
 import ProjectCards from "../components/ProjectCards";
-
+import PageWrapper from "../components/PageWrapper";
 export default function Projects() {
   return (
+    <PageWrapper>
     <section className="max-w-6xl mx-auto px-6 py-12">
       <h1 className="text-4xl font-extrabold mb-8">
         Projects 🚀
@@ -20,5 +21,6 @@ export default function Projects() {
         ))}
       </div>
     </section>
+    </PageWrapper>
   );
 }

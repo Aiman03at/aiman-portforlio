@@ -6,7 +6,7 @@ const baseLink =
 
 export default function Navbar() {
   return (
-    <nav className="sticky top-0 z-50 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-black">
+    <nav className="sticky top-0 z-50 border-b font-bold border-gray-200 dark:border-gray-800 bg-white dark:bg-black">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <span className="font-bold text-lg">Aiman ✨</span>
 
@@ -16,7 +16,7 @@ export default function Navbar() {
             className={({ isActive }) =>
               `${baseLink} ${
                 isActive
-                  ? "bg-gray-200 dark:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                  ? "bg-gray-200 font-bold dark:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
                   : "hover:bg-gray-100 dark:hover:bg-gray-800"
               }`
             }
@@ -48,6 +48,34 @@ export default function Navbar() {
             }
           >
             Blog
+          </NavLink>
+
+          {/*About */}
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              `${baseLink} ${
+                isActive
+                  ? "bg-gray-200 dark:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                  : "hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`
+            }
+          >
+            About
+          </NavLink>
+
+          {/* Contact */}
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              `${baseLink} ${
+                isActive
+                  ? "bg-gray-200 dark:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                  : "hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`
+            }
+          >
+            Contact
           </NavLink>
 
           <DarkModeToggle />
