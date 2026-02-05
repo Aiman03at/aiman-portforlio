@@ -5,6 +5,7 @@ import { fadeUp} from "../aimations/variants";
 import { stagger } from "../aimations/variants";
 import { sectionVariant } from "../aimations/variants";
 import PageWrapper from "../components/PageWrapper";
+import { Helmet } from "react-helmet-async";      
 
 export default function ProjectDetails() {
   const { id } = useParams();
@@ -17,8 +18,12 @@ export default function ProjectDetails() {
     return <p className="p-6">Project not found</p>;
   }
 
-  return (
+  return (                              
     <PageWrapper>
+    <Helmet>
+      <title>{project.title} | Aiman's Projects</title>
+      <meta name="description" content={project.description} />   
+    </Helmet>
     <motion.section
     initial="hidden"
     whileInView="visible"

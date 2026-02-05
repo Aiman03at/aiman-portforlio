@@ -1,9 +1,13 @@
 import PageWrapper from "../components/PageWrapper";
-
+import { Helmet } from "react-helmet-async";
 export default function About() {
   return (
     <PageWrapper>
       <section className="min-h-screen bg-white text-gray-900 dark:bg-zinc-900 dark:text-gray-100">
+        <Helmet>
+          <title>About Me - Aiman Portfolio</title>
+          <meta name="description" content="Learn more about Aiman, a frontend developer passionate about building clean, performant, and accessible user interfaces." />
+        </Helmet>
         <h1 className="text-4xl font-bold mb-8">About Me</h1>
         
         <a
@@ -27,7 +31,8 @@ export default function About() {
           predictable systems, and iterate thoughtfully.
         </p>
 
-        <p className="text-lg  leading-relaxed">
+        <p className="text-lg 
+         leading-relaxed">
           I’m currently looking for frontend or full-stack opportunities
           where I can contribute, learn, and grow as part of a collaborative team.
         </p>
