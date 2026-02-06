@@ -3,8 +3,7 @@
 A modern, responsive frontend portfolio built with React and TypeScript, showcasing projects, case studies, and blogs with smooth animations and dark mode support.
 
 ## 🚀 Live Demo
-👉 https://aiman-portforlio-rt37.vercel.app/
-
+👉[https://aiman-portforlio-3qgt.vercel.app/]
 ---
 
 ## 🛠 Tech Stack
