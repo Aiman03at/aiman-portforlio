@@ -3,7 +3,7 @@
 A modern, responsive frontend portfolio built with React and TypeScript, showcasing projects, case studies, and blogs with smooth animations and dark mode support.
 
 ## 🚀 Live Demo
-👉 https://your-vercel-link.vercel.app
+👉 https://aiman-portforlio-rt37.vercel.app/
 
 ---
 
@@ -52,7 +52,7 @@ A modern, responsive frontend portfolio built with React and TypeScript, showcas
 ## 🔧 Installation & Setup
 
 ```bash
-git clone https://github.com/yourusername/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/Aiman03at/aiman-portforlio
+cd aiman-portforlio
 npm install
 npm run dev
